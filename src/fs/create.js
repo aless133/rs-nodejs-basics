@@ -1,16 +1,12 @@
 import fsPromises from 'fs/promises';
+import { found, __dirname } from './common.js';
 
 const create = async () => {
-  const filename="./src/fs/files/fresh.txt";
-  let error = false;
-  try {
-    await fsPromises.access(filename);
-    error = true;
-  } catch (e) {
+  const filename=__dirname+"/files/fresh.txt";
+  if ( !(await found(filename)) ) {
     await fsPromises.writeFile(filename,"I am fresh and young");
-  }
-  if (error) {
-    throw Error('FS operation failed');
+  } else {
+    throw Error ('FS operation failed');
   }
 };
 
