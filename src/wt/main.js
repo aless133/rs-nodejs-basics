@@ -15,7 +15,11 @@ const performCalculations = async () => {
                     workerData: { id: i, num: i + 10 },
                 });
                 worker.on("message", (data) => {
-                    datas[data.id] = { status: data.status, data: data.data };
+                    datas[i] = { status: "resolved", data };
+                    resolve();
+                });
+                worker.on("error", (err) => {
+                    datas[i] = { status: "error", data: null };
                     resolve();
                 });
             })
