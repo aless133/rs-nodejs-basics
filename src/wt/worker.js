@@ -4,7 +4,7 @@ const nthFibonacci = (n) =>
     n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
 
 //uncomment for test error
-// if (workerData.id % 2)
+// if (workerData.num % 2)
 // console.log(q);
 
 const sendResult = () => {

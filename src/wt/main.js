@@ -12,7 +12,7 @@ const performCalculations = async () => {
         promises.push(
             new Promise((resolve, reject) => {
                 const worker = new Worker(__dirname + "/worker.js", {
-                    workerData: { id: i, num: i + 10 },
+                    workerData: { num: i + 10 },
                 });
                 worker.on("message", (data) => {
                     datas[i] = { status: "resolved", data };
