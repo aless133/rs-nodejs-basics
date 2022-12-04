@@ -20,7 +20,7 @@ const performCalculations = async () => {
                 });
                 worker.on("error", (err) => {
                     datas[i] = { status: "error", data: null };
-                    resolve();
+                    reject();
                 });
             })
         );
