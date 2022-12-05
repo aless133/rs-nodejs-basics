@@ -1,5 +1,10 @@
+import crypto from 'crypto';
+import fs from 'fs/promises';
+
 const calculateHash = async () => {
-    // Write your code here 
+    const data = await fs.readFile('./src/hash/files/fileToCalculateHashFor.txt');
+    const hex = crypto.createHash('sha256').update(data).digest('hex');
+    console.log(hex)
 };
 
 await calculateHash();
